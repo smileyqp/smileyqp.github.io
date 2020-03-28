@@ -1,1 +1,4 @@
-Cat World : https://smileyqp.github.io/
+
+[Netify website](https://smileyqp.netlify.com/)
+
+[Github Cat World](https://smileyqp.github.io/)
