@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>rn中地图组件的选择(react-native-amap3d) · GitBook</title>
+        <title>网络调试工具reactotron · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="react native实现监控手势进行上下拉动效果.html" />
     
-    
-    <link rel="prev" href="react-navigation；导航解决方案.html" />
+    <link rel="prev" href="android9.0以上版本http请求不了怎么办.html" />
     
 
     </head>
@@ -246,7 +244,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.1.3.2" data-path="react-native中地图组件的选择react-native-amap3d.html">
+        <li class="chapter " data-level="1.1.3.2" data-path="react-native中地图组件的选择react-native-amap3d.html">
             
                 <a href="react-native中地图组件的选择react-native-amap3d.html">
             
@@ -298,7 +296,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.1.3.6" data-path="网络调试工具reactotron.html">
+        <li class="chapter active" data-level="1.1.3.6" data-path="网络调试工具reactotron.html">
             
                 <a href="网络调试工具reactotron.html">
             
@@ -545,7 +543,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >rn中地图组件的选择(react-native-amap3d)</a>
+        <a href="../.." >网络调试工具reactotron</a>
     </h1>
 </div>
 
@@ -560,119 +558,33 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="react-native&#x4E2D;&#x5730;&#x56FE;&#x7EC4;&#x4EF6;&#x7684;&#x9009;&#x62E9;react-native-amap3d">react native&#x4E2D;&#x5730;&#x56FE;&#x7EC4;&#x4EF6;&#x7684;&#x9009;&#x62E9;(react-native-amap3d)</h1>
+                                <h1 id="&#x7F51;&#x7EDC;&#x8C03;&#x8BD5;&#x5DE5;&#x5177;reactotron">&#x7F51;&#x7EDC;&#x8C03;&#x8BD5;&#x5DE5;&#x5177;reactotron</h1>
 <blockquote>
-<h6 id="&#x9700;&#x6C42;--react-native&#x9879;&#x76EE;&#x4E2D;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x9AD8;&#x5FB7;&#x5730;&#x56FE;&#x7EC4;&#x4EF6;&#x6709;&#x57FA;&#x672C;&#x7684;&#x8F68;&#x8FF9;&#x4EE5;&#x53CA;marker&#x529F;&#x80FD;">&#x9700;&#x6C42; : react-native&#x9879;&#x76EE;&#x4E2D;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x9AD8;&#x5FB7;&#x5730;&#x56FE;&#x7EC4;&#x4EF6;;&#x6709;&#x57FA;&#x672C;&#x7684;&#x8F68;&#x8FF9;&#x4EE5;&#x53CA;marker&#x529F;&#x80FD;;</h6>
 <ul>
-<li>react-native-amap-geolocation</li>
-<li>react-native-smart-amap </li>
-<li>react-native-amap3d </li>
-<li>react-native-maps 
-.........
-&#x5BF9;&#x6BD4;&#x4E86;&#x4E00;&#x4E9B;,&#x611F;&#x89C9;&#x6BD4;&#x8F83;&#x5168;&#x7684;&#x8FD8;&#x662F;react-native-community&#x7684;react-native-maps ;but&#x6CA1;&#x627E;&#x5230;&#x5176;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x9AD8;&#x5FB7;&#x5730;&#x56FE;,&#x53EA;&#x80FD;&#x4F7F;&#x7528;Google map?!!&#x4E8E;&#x662F;,&#x53EA;&#x597D;&#x9009;&#x5176;&#x4ED6;&#x7684;&#x4E86;,&#x6700;&#x7EC8;&#x9009;&#x62E9;&#x4E86;eact-native-amap3d,&#x6548;&#x679C;&#x4EE5;&#x53CA;&#x7B80;&#x5355;&#x4F7F;&#x7528;&#x5982;&#x4E0B;:
-<img src="https://img-blog.csdnimg.cn/20190809112920304.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0MjczMDU5,size_16,color_FFFFFF,t_70" alt=""></li>
-</ul>
-</blockquote>
-<pre><code class="lang-shell">
-import React, {Component} from &apos;react&apos;;
-import {Platform, StyleSheet, View} from &apos;react-native&apos;;
-import { MapView,Marker,Polyline,Polygon } from &apos;react-native-amap3d&apos;;
-
-var Dimensions = require(&apos;Dimensions&apos;);
-const deviceHeight = Dimensions.get(&quot;window&quot;).height;
-const deviceWidth = Dimensions.get(&quot;window&quot;).width;
-
-
-
-class CarDetailsPage extends Component {
-  constructor(props) {
-    super(props);
-    console.disableYellowBox = true;
-    this.state = {
-    //****
-    };
-  }
-  componentWillMount () {  
-  }
-
-
-  render() {  
-    return (
-      &lt;Container&gt;
-        &lt;View style={{ flex: 1 }}&gt;
-          &lt;MapView
-            draggable
-              coordinate={ {
-                  latitude: 40.006901,
-                  longitude: 116.097972,
-                }}
-              mapType={&apos;standard&apos;}
-              zoomLevel={12}
-              zoomEnabled={true}
-              scrollEnabled={true}
-              rotateEnabled={true}
-              style={styles.mapStyles}
-              showsZoomControls={false}
-              zoomLevel={15}
-          &gt;      
-
-            //&#x753B;marker 
-            &lt;Marker 
-              key={navigation.getParam(&apos;currentCarName&apos;,&apos;&apos;)}
-              active
-              title={navigation.getParam(&apos;currentCarName&apos;,&apos;&apos;)}
-              color=&apos;blue&apos;
-              description={&apos;battery:&apos;+this.props.carwebsocket.carstatus.battery}
-              coordinate={ {
-                  latitude: 40.006901,
-                  longitude: 116.097972,
-                }}/&gt;
-
-            //&#x753B;&#x6846;
-            &lt;Polygon 
-            coordinates={gps} 
-            fillColor={&apos;transparent&apos;} 
-            strokeColor={&apos;#1398E2&apos;} 
-            strokeWidth={4}
-            &gt;&lt;/Polygon&gt;  
-
-            //&#x753B;&#x7EBF;&#x6761;
-            &lt;Polyline
-              width={10}
-              color=&apos;rgba(255, 0, 0, 0.5)&apos;
-
-              coordinates={[
-                {
-                  latitude: 40.006901,
-                  longitude: 116.097972,
-                },
-                {
-                  latitude: 40.006901,
-                  longitude: 116.597972,
-                },
-                {
-                  latitude: 39.706901,
-                  longitude: 116.597972,
-                },
-              ]}
-            /&gt;      
-          &lt;/MapView&gt;
-         &lt;/View&gt;
-      &lt;/Container&gt;
-    );
-  }
-}
-const styles = {
-  mapStyles:{
-    height:deviceHeight,
-    width:deviceWidth
-  }
-}
-
-export default CarDetailsPage;
+<li><p><a href="https://github.com/infinitered/reactotron/releases" target="_blank">&#x4E0B;&#x8F7D;&#x76F8;&#x5E94;reactotron&#x7248;&#x672C;</a>
+<img src="https://img-blog.csdnimg.cn/20190828182841429.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0MjczMDU5,size_16,color_FFFFFF,t_70" alt=""></p>
+</li>
+<li><p>&#x5B89;&#x88C5;reacttotron&#x5728;&#x81EA;&#x5DF1;&#x7684;RN&#x9879;&#x76EE;&#x4E2D;&#x7684;dev&#x4F9D;&#x8D56;&#x4E0A;</p>
+<pre><code class="lang-shell">npm i --save-dev reactotron-react-native
 </code></pre>
-<blockquote>
-<p>&#x867D;&#x7136;react-native-amap3d&#x4E2A;&#x4EBA;&#x89C9;&#x5F97;&#x7A0D;&#x5FAE;&#x6709;&#x4E9B;&#x7EC4;&#x4EF6;&#x4E0D;&#x591F;&#x4E30;&#x5BCC;&#x5B8C;&#x5584;,&#x6709;&#x4E9B;&#x9057;&#x61BE;;&#x4F46;&#x662F;&#x57FA;&#x7840;&#x529F;&#x80FD;&#x662F;&#x591F;&#x7528;&#x7684;,&#x4EE5;&#x53CA;&#x914D;&#x7F6E;&#x4F7F;&#x7528;&#x8FD8;&#x662F;&#x6BD4;&#x8F83;&#x65B9;&#x4FBF;&#x7684;</p>
+</li>
+<li>&#x5728;&#x9879;&#x76EE;&#x76EE;&#x5F55;&#x4E0B;&#x521B;&#x5EFA;ReactotronConfig.js &#x6587;&#x4EF6;&#xFF0C;&#x5E76;&#x4E14;&#x5C06;&#x4EE5;&#x4E0B;&#x4EE3;&#x7801;&#x7C98;&#x8D34;&#x8FDB;&#x53BB;<pre><code class="lang-shell">import Reactotron from &apos;reactotron-react-native&apos;
+Reactotron
+.configure() // controls connection &amp; communication settings
+.useReactNative() // add all built-in react native plugins
+.connect() // let&apos;s connect!
+</code></pre>
+</li>
+<li>&#x6700;&#x540E;&#x5728;App.js&#x6216;&#x8005;index.js&#x4E2D;&#x5F15;&#x5165;ReactotronConfig.js&#xFF0C;&#x6DFB;&#x52A0;&#x4EE5;&#x4E0B;&#x4EE3;&#x7801;&#xFF1A;<pre><code class="lang-shell">//&#x6CE8;&#x610F;&#x6B64;&#x5904;&#x6587;&#x4EF6;&#x8DEF;&#x5F84;&#x6539;&#x4E3A;&#x81EA;&#x5DF1;&#x9879;&#x76EE;&#x4E2D;&#x7684;&#x76F8;&#x5BF9;&#x8DEF;&#x5F84;
+if(__DEV__) {
+import(&apos;./ReactotronConfig&apos;).then(() =&gt; console.log(&apos;Reactotron Configured&apos;))
+}
+</code></pre>
+&#x73B0;&#x5728;&#x4FBF;&#x53EF;&#x4EE5;&#x8FDB;&#x884C;&#x76F8;&#x5173;&#x7F51;&#x7EDC;&#x8BF7;&#x6C42;&#x7684;&#x8C03;&#x8BD5;&#xFF1B;&#x6CE8;&#x610F;&#xFF1A;&#x5176;&#x9ED8;&#x8BA4;&#x76D1;&#x542C;&#x7684;&#x7AEF;&#x53E3;&#x4E3A;9090&#xFF0C;&#x786E;&#x4FDD;&#x5176;&#x6CA1;&#x6709;&#x88AB;&#x5360;&#x7528;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x4F7F;&#x7528;&#xFF1B;&#x5E76;&#x4E14;&#x5982;&#x679C;&#x662F;&#x7528;&#x771F;&#x673A;&#x8C03;&#x8BD5;&#xFF0C;&#x8BF7;&#x5F00;&#x542F;9090&#x8FDE;&#x63A5;<pre><code class="lang-shell">adb reverse tcp:9090 tcp:9090
+</code></pre>
+<img src="https://img-blog.csdnimg.cn/20190828183236140.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0MjczMDU5,size_16,color_FFFFFF,t_70" alt="">
+&#x539F;&#x6587;&#x5730;&#x5740;&#xFF1A;<a href="https://blog.csdn.net/qq_34273059/article/details/100124501" target="_blank">smileyqp&apos;s  gitbook</a></li>
+</ul>
 </blockquote>
 
                                 
@@ -701,14 +613,10 @@ export default CarDetailsPage;
 
             
                 
-                <a href="react-navigation；导航解决方案.html" class="navigation navigation-prev " aria-label="Previous page: react-navigation；导航解决方案">
+                <a href="android9.0以上版本http请求不了怎么办.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: android9.0以上版本http请求不了怎么办">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="react native实现监控手势进行上下拉动效果.html" class="navigation navigation-next " aria-label="Next page: rn实现监控手势进行上下拉动效果">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -717,7 +625,7 @@ export default CarDetailsPage;
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"rn中地图组件的选择(react-native-amap3d)","level":"1.1.3.2","depth":3,"next":{"title":"rn实现监控手势进行上下拉动效果","level":"1.1.3.3","depth":3,"path":"blog/react-native/react native实现监控手势进行上下拉动效果.md","ref":"blog/react-native/react native实现监控手势进行上下拉动效果.md","articles":[]},"previous":{"title":"react-navigation；导航解决方案","level":"1.1.3.1","depth":3,"path":"blog/react-native/react-navigation；导航解决方案.md","ref":"blog/react-native/react-navigation；导航解决方案.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"blog/react-native/react-native中地图组件的选择react-native-amap3d.md","mtime":"2020-03-30T10:56:53.920Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-31T02:39:42.037Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"网络调试工具reactotron","level":"1.1.3.6","depth":3,"next":{"title":"Roslibjs","level":"1.1.4","depth":2,"ref":"","articles":[{"title":"我第一个rosd_emo","level":"1.1.4.1","depth":3,"path":"blog/ros/我第一个ros demo.md","ref":"blog/ros/我第一个ros demo.md","articles":[]},{"title":"前端开发中使用roslibjs和机器交互","level":"1.1.4.2","depth":3,"path":"blog/ros/前端开发中使用roslibjs和机器交互.md","ref":"blog/ros/前端开发中使用roslibjs和机器交互.md","articles":[]},{"title":"ros概念的快速概述","level":"1.1.4.3","depth":3,"path":"blog/ros/ros概念的快速概述.md","ref":"blog/ros/ros概念的快速概述.md","articles":[]},{"title":"关于js和ros进行交互roslibjs","level":"1.1.4.4","depth":3,"path":"blog/ros/关于js和ros进行交互roslibjs.md","ref":"blog/ros/关于js和ros进行交互roslibjs.md","articles":[]}]},"previous":{"title":"android9.0以上版本http请求不了怎么办","level":"1.1.3.5","depth":3,"path":"blog/react-native/android9.0以上版本http请求不了怎么办.md","ref":"blog/react-native/android9.0以上版本http请求不了怎么办.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"blog/react-native/网络调试工具reactotron.md","mtime":"2020-03-31T02:16:33.814Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-31T02:39:42.037Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
