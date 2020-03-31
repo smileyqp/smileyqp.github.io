@@ -561,7 +561,60 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="php&#x57FA;&#x7840;&#x56DE;&#x987E;&#x4E4B;phpjson&#xFF08;&#x516D;&#xFF09;">PHP&#x57FA;&#x7840;&#x56DE;&#x987E;&#x4E4B;PHP_JSON&#xFF08;&#x516D;&#xFF09;</h1>
+<blockquote>
+<p><strong>JSON &#x51FD;&#x6570;</strong>
+<img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy84MjAwMDkxLTk0ZTI3ZTJjOWI2MjM1ZDcucG5n?x-oss-process=image/format,png" alt=""></p>
+<p><strong>PHP &#x6570;&#x7EC4;&#x8F6C;&#x6362;&#x4E3A; JSON &#x683C;&#x5F0F;&#x6570;&#x636E;&#xFF1A;</strong></p>
+</blockquote>
+<pre><code>&lt;?php
+   $arr = array(&apos;a&apos; =&gt; 1, &apos;b&apos; =&gt; 2, &apos;c&apos; =&gt; 3, &apos;d&apos; =&gt; 4, &apos;e&apos; =&gt; 5);
+   echo json_encode($arr);
+?&gt;
+</code></pre><blockquote>
+<p><strong>PHP &#x5BF9;&#x8C61;&#x8F6C;&#x6362;&#x4E3A; JSON &#x683C;&#x5F0F;&#x6570;&#x636E;&#xFF1A;</strong></p>
+</blockquote>
+<pre><code>&lt;?php
+   class Emp {
+       public $name = &quot;&quot;;
+       public $hobbies  = &quot;&quot;;
+       public $birthdate = &quot;&quot;;
+   }
+   $e = new Emp();
+   $e-&gt;name = &quot;sachin&quot;;
+   $e-&gt;hobbies  = &quot;sports&quot;;
+   $e-&gt;birthdate = date(&apos;m/d/Y h:i:s a&apos;, &quot;8/5/1974 12:20:03 p&quot;);
+   $e-&gt;birthdate = date(&apos;m/d/Y h:i:s a&apos;, strtotime(&quot;8/5/1974   12:20:03&quot;));
+   echo json_encode($e);
+?&gt;
+//&#x4EE3;&#x7801;&#x6267;&#x884C;&#x7ED3;&#x679C;&#x4E3A;&#xFF1A;
+//{&quot;name&quot;:&quot;sachin&quot;,&quot;hobbies&quot;:&quot;sports&quot;,&quot;birthdate&quot;:&quot;08\/05\/1974 12:20:03 pm&quot;}
+</code></pre><blockquote>
+<p><strong>json_decode</strong>
+PHP json_decode() &#x51FD;&#x6570;&#x7528;&#x4E8E;&#x5BF9; JSON &#x683C;&#x5F0F;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x8FDB;&#x884C;&#x89E3;&#x7801;&#xFF0C;&#x5E76;&#x8F6C;&#x6362;&#x4E3A; PHP &#x53D8;&#x91CF;&#x3002;</p>
+<p><strong>&#x89E3;&#x7801; JSON &#x6570;&#x636E;&#xFF1A;</strong></p>
+</blockquote>
+<pre><code>&lt;?php
+   $json = &apos;{&quot;a&quot;:1,&quot;b&quot;:2,&quot;c&quot;:3,&quot;d&quot;:4,&quot;e&quot;:5}&apos;;
+   var_dump(json_decode($json));
+   var_dump(json_decode($json, true));
+?&gt;
+</code></pre><p>&#x4EE5;&#x4E0A;&#x4EE3;&#x7801;&#x6267;&#x884C;&#x7ED3;&#x679C;&#x4E3A;&#xFF1A;</p>
+<pre><code>object(stdClass)#1 (5) {
+    [&quot;a&quot;] =&gt; int(1)
+    [&quot;b&quot;] =&gt; int(2)
+    [&quot;c&quot;] =&gt; int(3)
+    [&quot;d&quot;] =&gt; int(4)
+    [&quot;e&quot;] =&gt; int(5)
+}
 
+array(5) {
+    [&quot;a&quot;] =&gt; int(1)
+    [&quot;b&quot;] =&gt; int(2)
+    [&quot;c&quot;] =&gt; int(3)
+    [&quot;d&quot;] =&gt; int(4)
+    [&quot;e&quot;] =&gt; int(5)
+}
+</code></pre>
                                 
                                 </section>
                             
@@ -604,7 +657,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"PHP基础回顾之PHP_JSON（六）","level":"1.1.5.6","depth":3,"next":{"title":"PHP基础回顾之My_SQL（七）","level":"1.1.5.7","depth":3,"path":"blog/phpfile/PHP基础回顾之My_SQL（七）.md","ref":"blog/phpfile/PHP基础回顾之My_SQL（七）.md","articles":[]},"previous":{"title":"PHP基础回顾之PHP过滤器(五)","level":"1.1.5.5","depth":3,"path":"blog/phpfile/PHP基础回顾之PHP过滤器（五）.md","ref":"blog/phpfile/PHP基础回顾之PHP过滤器（五）.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"blog/phpfile/PHP基础回顾之PHP_JSON（六）.md","mtime":"2020-03-31T02:38:21.019Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-31T02:39:42.037Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"PHP基础回顾之PHP_JSON（六）","level":"1.1.5.6","depth":3,"next":{"title":"PHP基础回顾之My_SQL（七）","level":"1.1.5.7","depth":3,"path":"blog/phpfile/PHP基础回顾之My_SQL（七）.md","ref":"blog/phpfile/PHP基础回顾之My_SQL（七）.md","articles":[]},"previous":{"title":"PHP基础回顾之PHP过滤器(五)","level":"1.1.5.5","depth":3,"path":"blog/phpfile/PHP基础回顾之PHP过滤器（五）.md","ref":"blog/phpfile/PHP基础回顾之PHP过滤器（五）.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"blog/phpfile/PHP基础回顾之PHP_JSON（六）.md","mtime":"2020-03-31T07:41:37.090Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-31T02:39:42.037Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

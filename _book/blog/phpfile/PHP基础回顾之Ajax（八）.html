@@ -559,6 +559,359 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="php&#x57FA;&#x7840;&#x56DE;&#x987E;&#x4E4B;ajax&#xFF08;&#x516B;&#xFF09;">PHP&#x57FA;&#x7840;&#x56DE;&#x987E;&#x4E4B;Ajax&#xFF08;&#x516B;&#xFF09;</h1>
+<blockquote>
+<p><strong>AJAX</strong>
+AJAX &#x662F;&#x4E00;&#x79CD;&#x5728;&#x65E0;&#x9700;&#x91CD;&#x65B0;&#x52A0;&#x8F7D;&#x6574;&#x4E2A;&#x7F51;&#x9875;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x80FD;&#x591F;&#x66F4;&#x65B0;&#x90E8;&#x5206;&#x7F51;&#x9875;&#x7684;&#x6280;&#x672F;&#x3002;
+<img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy84MjAwMDkxLWU2MThkOTkwMjM4YmFlNjQucG5n?x-oss-process=image/format,png" alt=""></p>
+<p><strong>AJAX&#x4E0E;My SQL</strong>
+&#x5B9E;&#x4F8B;&#x89E3;&#x91CA; - HTML &#x9875;&#x9762;&#x3002;&#x5F53;&#x7528;&#x6237;&#x5728;&#x4E0A;&#x9762;&#x7684;&#x4E0B;&#x62C9;&#x5217;&#x8868;&#x4E2D;&#x9009;&#x62E9;&#x67D0;&#x4F4D;&#x7528;&#x6237;&#x65F6;&#xFF0C;&#x4F1A;&#x6267;&#x884C;&#x540D;&#x4E3A; &quot;showSite()&quot; &#x7684;&#x51FD;&#x6570;&#x3002;&#x8BE5;&#x51FD;&#x6570;&#x7531; &quot;onchange&quot; &#x4E8B;&#x4EF6;&#x89E6;&#x53D1;&#x3002;showSite() &#x51FD;&#x6570;&#x4F1A;&#x6267;&#x884C;&#x4EE5;&#x4E0B;&#x6B65;&#x9AA4;&#xFF1A;</p>
+<ul>
+<li>&#x68C0;&#x67E5;&#x662F;&#x5426;&#x6709;&#x7F51;&#x7AD9;&#x88AB;&#x9009;&#x62E9;</li>
+<li>&#x521B;&#x5EFA; XMLHttpRequest &#x5BF9;&#x8C61;</li>
+<li>&#x521B;&#x5EFA;&#x5728;&#x670D;&#x52A1;&#x5668;&#x54CD;&#x5E94;&#x5C31;&#x7EEA;&#x65F6;&#x6267;&#x884C;&#x7684;&#x51FD;&#x6570;</li>
+<li>&#x5411;&#x670D;&#x52A1;&#x5668;&#x4E0A;&#x7684;&#x6587;&#x4EF6;&#x53D1;&#x9001;&#x8BF7;&#x6C42;</li>
+<li>&#x8BF7;&#x6CE8;&#x610F;&#x6DFB;&#x52A0;&#x5230; URL &#x672B;&#x7AEF;&#x7684;&#x53C2;&#x6570;&#xFF08;q&#xFF09;&#xFF08;&#x5305;&#x542B;&#x4E0B;&#x62C9;&#x5217;&#x8868;&#x7684;&#x5185;&#x5BB9;&#xFF09;</li>
+</ul>
+</blockquote>
+<pre><code>//test.html &#x6587;&#x4EF6;&#x4EE3;&#x7801;:
+&lt;!DOCTYPE html&gt; 
+&lt;html&gt; 
+&lt;head&gt; 
+&lt;meta charset=&quot;utf-8&quot;&gt; 
+&lt;title&gt;&#x83DC;&#x9E1F;&#x6559;&#x7A0B;(runoob.com)&lt;/title&gt; 
+&lt;script&gt;
+    function showSite(str)
+    {
+        if (str==&quot;&quot;)
+        {
+            document.getElementById(&quot;txtHint&quot;).innerHTML=&quot;&quot;;
+            return;
+        } 
+        if (window.XMLHttpRequest)
+        {
+            // IE7+, Firefox, Chrome, Opera, Safari &#x6D4F;&#x89C8;&#x5668;&#x6267;&#x884C;&#x4EE3;&#x7801;
+            xmlhttp=new XMLHttpRequest();
+        }
+    else
+    {
+    // IE6, IE5 &#x6D4F;&#x89C8;&#x5668;&#x6267;&#x884C;&#x4EE3;&#x7801;
+    xmlhttp=new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);
+    }
+xmlhttp.onreadystatechange=function()
+{
+    if (xmlhttp.readyState==4 &amp;&amp; xmlhttp.status==200)
+    {
+        document.getElementById(&quot;txtHint&quot;).innerHTML=xmlhttp.responseText;
+    }
+}
+xmlhttp.open(&quot;GET&quot;,&quot;getsite_mysql.php?q=&quot;+str,true);
+xmlhttp.send();
+}
+  &lt;/script&gt;
+  &lt;/head&gt;
+&lt;body&gt;
+&lt;form&gt;
+&lt;select name=&quot;users&quot; onchange=&quot;showSite(this.value)&quot;&gt;
+&lt;option value=&quot;&quot;&gt;&#x9009;&#x62E9;&#x4E00;&#x4E2A;&#x7F51;&#x7AD9;:&lt;/option&gt;
+&lt;option value=&quot;1&quot;&gt;Google&lt;/option&gt;
+&lt;option value=&quot;2&quot;&gt;&#x6DD8;&#x5B9D;&lt;/option&gt;
+&lt;option value=&quot;3&quot;&gt;&#x83DC;&#x9E1F;&#x6559;&#x7A0B;&lt;/option&gt;
+&lt;option value=&quot;4&quot;&gt;&#x5FAE;&#x535A;&lt;/option&gt;
+&lt;option value=&quot;5&quot;&gt;Facebook&lt;/option&gt;
+&lt;/select&gt;
+&lt;/form&gt;
+&lt;br&gt;
+&lt;div id=&quot;txtHint&quot;&gt;&lt;b&gt;&#x7F51;&#x7AD9;&#x4FE1;&#x606F;&#x663E;&#x793A;&#x5728;&#x8FD9;&#x91CC;&#x2026;&#x2026;&lt;/b&gt;&lt;/div&gt; 
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+
+//getsite_mysql.php &#x6587;&#x4EF6;&#x4EE3;&#x7801;******************************************
+&lt;?php
+$q = isset($_GET[&quot;q&quot;]) ? intval($_GET[&quot;q&quot;]) : &apos;&apos;; 
+if(empty($q)) {
+    echo &apos;&#x8BF7;&#x9009;&#x62E9;&#x4E00;&#x4E2A;&#x7F51;&#x7AD9;&apos;;
+    exit;
+} 
+$con = mysqli_connect(&apos;localhost&apos;,&apos;root&apos;,&apos;123456&apos;);
+if (!$con)
+{
+    die(&apos;Could not connect: &apos; . mysqli_error($con));
+}
+// &#x9009;&#x62E9;&#x6570;&#x636E;&#x5E93;
+mysqli_select_db($con,&quot;test&quot;);
+// &#x8BBE;&#x7F6E;&#x7F16;&#x7801;&#xFF0C;&#x9632;&#x6B62;&#x4E2D;&#x6587;&#x4E71;&#x7801;
+mysqli_set_charset($con, &quot;utf8&quot;);
+
+$sql=&quot;SELECT * FROM Websites WHERE id = &apos;&quot;.$q.&quot;&apos;&quot;;
+
+$result = mysqli_query($con,$sql);
+
+echo &quot;&lt;table border=&apos;1&apos;&gt;
+&lt;tr&gt;
+&lt;th&gt;ID&lt;/th&gt;
+&lt;th&gt;&#x7F51;&#x7AD9;&#x540D;&lt;/th&gt;
+&lt;th&gt;&#x7F51;&#x7AD9; URL&lt;/th&gt;
+&lt;th&gt;Alexa &#x6392;&#x540D;&lt;/th&gt;
+&lt;th&gt;&#x56FD;&#x5BB6;&lt;/th&gt;
+&lt;/tr&gt;&quot;;
+
+while($row = mysqli_fetch_array($result))
+{
+    echo &quot;&lt;tr&gt;&quot;;
+    echo &quot;&lt;td&gt;&quot; . $row[&apos;id&apos;] . &quot;&lt;/td&gt;&quot;;
+    echo &quot;&lt;td&gt;&quot; . $row[&apos;name&apos;] . &quot;&lt;/td&gt;&quot;;
+    echo &quot;&lt;td&gt;&quot; . $row[&apos;url&apos;] . &quot;&lt;/td&gt;&quot;;
+    echo &quot;&lt;td&gt;&quot; . $row[&apos;alexa&apos;] . &quot;&lt;/td&gt;&quot;;
+    echo &quot;&lt;td&gt;&quot; . $row[&apos;country&apos;] . &quot;&lt;/td&gt;&quot;;
+    echo &quot;&lt;/tr&gt;&quot;;
+}
+echo &quot;&lt;/table&gt;&quot;;
+
+mysqli_close($con);
+?&gt;
+
+//&#x89E3;&#x91CA;&#xFF1A;&#x5F53;&#x67E5;&#x8BE2;&#x4ECE; JavaScript &#x53D1;&#x9001;&#x5230; PHP &#x6587;&#x4EF6;&#x65F6;&#xFF0C;&#x5C06;&#x53D1;&#x751F;&#xFF1A;
+//PHP &#x6253;&#x5F00;&#x4E00;&#x4E2A;&#x5230; MySQL &#x6570;&#x636E;&#x5E93;&#x7684;&#x8FDE;&#x63A5;
+//&#x627E;&#x5230;&#x9009;&#x4E2D;&#x7684;&#x7528;&#x6237;
+//&#x521B;&#x5EFA; HTML &#x8868;&#x683C;&#xFF0C;&#x586B;&#x5145;&#x6570;&#x636E;&#xFF0C;&#x5E76;&#x53D1;&#x9001;&#x56DE; &quot;txtHint&quot; &#x5360;&#x4F4D;&#x7B26;
+</code></pre><blockquote>
+<p><strong>AJAX &#x5B9E;&#x65F6;&#x641C;&#x7D22;</strong>
+&#x4E0E;&#x4F20;&#x7EDF;&#x7684;&#x641C;&#x7D22;&#x76F8;&#x6BD4;&#xFF0C;&#x5B9E;&#x65F6;&#x641C;&#x7D22;&#x5177;&#x6709;&#x5F88;&#x591A;&#x4F18;&#x52BF;&#xFF1A;</p>
+<ul>
+<li>&#x5F53;&#x952E;&#x5165;&#x6570;&#x636E;&#x65F6;&#xFF0C;&#x5C31;&#x4F1A;&#x663E;&#x793A;&#x51FA;&#x5339;&#x914D;&#x7684;&#x7ED3;&#x679C;</li>
+<li>&#x5F53;&#x7EE7;&#x7EED;&#x952E;&#x5165;&#x6570;&#x636E;&#x65F6;&#xFF0C;&#x5BF9;&#x7ED3;&#x679C;&#x8FDB;&#x884C;&#x8FC7;&#x6EE4;</li>
+<li>&#x5982;&#x679C;&#x7ED3;&#x679C;&#x592A;&#x5C11;&#xFF0C;&#x5220;&#x9664;&#x5B57;&#x7B26;&#x5C31;&#x53EF;&#x4EE5;&#x83B7;&#x5F97;&#x66F4;&#x5BBD;&#x7684;&#x8303;&#x56F4;</li>
+</ul>
+</blockquote>
+<pre><code>//HTML&#x9875;&#x9762;
+&lt;html&gt;
+&lt;head&gt;
+&lt;script&gt;
+    function showResult(str)
+{
+if (str.length==0)
+{ 
+    document.getElementById(&quot;livesearch&quot;).innerHTML=&quot;&quot;;
+    document.getElementById(&quot;livesearch&quot;).style.border=&quot;0px&quot;;
+    return;
+}
+if (window.XMLHttpRequest)
+{// IE7+, Firefox, Chrome, Opera, Safari &#x6D4F;&#x89C8;&#x5668;&#x6267;&#x884C;
+    xmlhttp=new XMLHttpRequest();
+}
+else
+{// IE6, IE5 &#x6D4F;&#x89C8;&#x5668;&#x6267;&#x884C;
+    xmlhttp=new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);
+}
+xmlhttp.onreadystatechange=function()
+{
+    if (xmlhttp.readyState==4 &amp;&amp; xmlhttp.status==200)
+    {
+        document.getElementById(&quot;livesearch&quot;).innerHTML=xmlhttp.responseText;
+        document.getElementById(&quot;livesearch&quot;).style.border=&quot;1px solid #A5ACB2&quot;;
+    }
+}
+xmlhttp.open(&quot;GET&quot;,&quot;livesearch.php?q=&quot;+str,true);
+xmlhttp.send();
+}
+&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;form&gt;
+&lt;input type=&quot;text&quot; size=&quot;30&quot; onkeyup=&quot;showResult(this.value)&quot;&gt;
+&lt;div id=&quot;livesearch&quot;&gt;&lt;/div&gt;
+&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+//PHP&#x6587;&#x4EF6;***************************************************************
+&lt;?php
+$xmlDoc=new DOMDocument();
+$xmlDoc-&gt;load(&quot;links.xml&quot;);
+$x=$xmlDoc-&gt;getElementsByTagName(&apos;link&apos;);
+// &#x4ECE; URL &#x4E2D;&#x83B7;&#x53D6;&#x53C2;&#x6570; q &#x7684;&#x503C;
+$q=$_GET[&quot;q&quot;];
+// &#x5982;&#x679C; q &#x53C2;&#x6570;&#x5B58;&#x5728;&#x5219;&#x4ECE; xml &#x6587;&#x4EF6;&#x4E2D;&#x67E5;&#x627E;&#x6570;&#x636E;
+if (strlen($q)&gt;0)
+{
+    $hint=&quot;&quot;;
+    for($i=0; $i&lt;($x-&gt;length); $i++)
+{
+    $y=$x-&gt;item($i)-&gt;getElementsByTagName(&apos;title&apos;);
+    $z=$x-&gt;item($i)-&gt;getElementsByTagName(&apos;url&apos;);
+    if ($y-&gt;item(0)-&gt;nodeType==1)
+    {
+        // &#x627E;&#x5230;&#x5339;&#x914D;&#x641C;&#x7D22;&#x7684;&#x94FE;&#x63A5;
+        if (stristr($y-&gt;item(0)-&gt;childNodes-&gt;item(0)-&gt;nodeValue,$q))
+        {
+            if ($hint==&quot;&quot;)
+            {
+                $hint=&quot;&lt;a href=&apos;&quot; . 
+                $z-&gt;item(0)-&gt;childNodes-&gt;item(0)-&gt;nodeValue . 
+                &quot;&apos; target=&apos;_blank&apos;&gt;&quot; . 
+                $y-&gt;item(0)-&gt;childNodes-&gt;item(0)-&gt;nodeValue . &quot;&lt;/a&gt;&quot;;
+            }
+            else
+            {
+                $hint=$hint . &quot;&lt;br /&gt;&lt;a href=&apos;&quot; . 
+                $z-&gt;item(0)-&gt;childNodes-&gt;item(0)-&gt;nodeValue . 
+                &quot;&apos; target=&apos;_blank&apos;&gt;&quot; . 
+                $y-&gt;item(0)-&gt;childNodes-&gt;item(0)-&gt;nodeValue . &quot;&lt;/a&gt;&quot;;
+            }
+        }
+    }
+}
+}
+// &#x5982;&#x679C;&#x6CA1;&#x627E;&#x5230;&#x5219;&#x8FD4;&#x56DE; &quot;no suggestion&quot;
+if ($hint==&quot;&quot;)
+{
+    $response=&quot;no suggestion&quot;;
+}
+else
+{
+    $response=$hint;
+}
+
+// &#x8F93;&#x51FA;&#x7ED3;&#x679C;
+echo $response;
+?&gt;
+//&#x5982;&#x679C; JavaScript &#x53D1;&#x9001;&#x4E86;&#x4EFB;&#x4F55;&#x6587;&#x672C;&#xFF08;&#x5373; strlen($q) &gt; 0&#xFF09;&#xFF0C;&#x5219;&#x4F1A;&#x53D1;&#x751F;&#xFF1A;
+//1&#x3001;&#x52A0;&#x8F7D; XML &#x6587;&#x4EF6;&#x5230;&#x65B0;&#x7684; XML DOM &#x5BF9;&#x8C61;
+//2&#x3001;&#x904D;&#x5386;&#x6240;&#x6709;&#x7684; &lt;title&gt; &#x5143;&#x7D20;&#xFF0C;&#x4EE5;&#x4FBF;&#x627E;&#x5230;&#x5339;&#x914D; JavaScript &#x6240;&#x4F20;&#x6587;&#x672C;
+//3&#x3001;&#x5728; &quot;$response&quot; &#x53D8;&#x91CF;&#x4E2D;&#x8BBE;&#x7F6E;&#x6B63;&#x786E;&#x7684; URL &#x548C;&#x6807;&#x9898;&#x3002;&#x5982;&#x679C;&#x627E;&#x5230;&#x591A;&#x4E8E;&#x4E00;&#x4E2A;&#x5339;&#x914D;&#xFF0C;&#x6240;&#x6709;&#x7684;&#x5339;&#x914D;&#x90FD;&#x4F1A;&#x6DFB;&#x52A0;&#x5230;&#x53D8;&#x91CF;&#x3002;
+//4&#x3001;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x627E;&#x5230;&#x5339;&#x914D;&#xFF0C;&#x5219;&#x628A; $response &#x53D8;&#x91CF;&#x8BBE;&#x7F6E;&#x4E3A; &quot;no suggestion&quot;&#x3002;
+</code></pre><blockquote>
+<p><strong>AJAX RSS &#x9605;&#x8BFB;&#x5668;</strong>
+RSS &#x9605;&#x8BFB;&#x5668;&#xFF0C;&#x901A;&#x8FC7;&#x5B83;&#xFF0C;&#x6765;&#x81EA; RSS &#x7684;&#x5185;&#x5BB9;&#x5728;&#x7F51;&#x9875;&#x4E0D;&#x8FDB;&#x884C;&#x5237;&#x65B0;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x88AB;&#x8F7D;&#x5165;&#x3002;&#x5F53; RSS feed &#x7684;&#x8BF7;&#x6C42;&#x4ECE; JavaScript &#x53D1;&#x9001;&#x5230; PHP &#x6587;&#x4EF6;&#x65F6;&#xFF0C;&#x5C06;&#x53D1;&#x751F;&#xFF1A;</p>
+<ul>
+<li>&#x68C0;&#x67E5;&#x54EA;&#x4E2A; RSS feed &#x88AB;&#x9009;&#x4E2D;</li>
+<li>&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684; XML DOM &#x5BF9;&#x8C61;</li>
+<li>&#x5728; xml &#x53D8;&#x91CF;&#x4E2D;&#x52A0;&#x8F7D; RSS &#x6587;&#x6863;</li>
+<li>&#x4ECE; channel &#x5143;&#x7D20;&#x4E2D;&#x63D0;&#x53D6;&#x5E76;&#x8F93;&#x51FA;&#x5143;&#x7D20;</li>
+<li>&#x4ECE; item &#x5143;&#x7D20;&#x4E2D;&#x63D0;&#x53D6;&#x5E76;&#x8F93;&#x51FA;&#x5143;&#x7D20;</li>
+</ul>
+<p><strong>AJAX &#x6295;&#x7968;</strong>
+&#x901A;&#x8FC7;&#x5B83;&#xFF0C;&#x6295;&#x7968;&#x7ED3;&#x679C;&#x5728;&#x7F51;&#x9875;&#x4E0D;&#x8FDB;&#x884C;&#x5237;&#x65B0;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x88AB;&#x663E;&#x793A;&#x3002;&#x5F53;&#x6240;&#x9009;&#x7684;&#x503C;&#x4ECE; JavaScript &#x53D1;&#x9001;&#x5230; PHP &#x6587;&#x4EF6;&#x65F6;&#xFF0C;&#x5C06;&#x53D1;&#x751F;&#xFF1A;</p>
+<ul>
+<li>&#x83B7;&#x53D6; &quot;poll_result.txt&quot;(&#x5B58;&#x50A8;&#x7ED3;&#x679C;&#x7684;&#x6587;&#x4EF6;) &#x6587;&#x4EF6;&#x7684;&#x5185;&#x5BB9;</li>
+<li>&#x628A;&#x6587;&#x4EF6;&#x5185;&#x5BB9;&#x653E;&#x5165;&#x53D8;&#x91CF;&#xFF0C;&#x5E76;&#x5411;&#x88AB;&#x9009;&#x53D8;&#x91CF;&#x7D2F;&#x52A0; 1</li>
+<li>&#x628A;&#x7ED3;&#x679C;&#x5199;&#x5165; &quot;poll_result.txt&quot; &#x6587;&#x4EF6;</li>
+<li>&#x8F93;&#x51FA;&#x56FE;&#x5F62;&#x5316;&#x7684;&#x6295;&#x7968;&#x7ED3;&#x679C;</li>
+</ul>
+</blockquote>
+<h6 id="&#x5E38;&#x89C1;&#x72B6;&#x6001;&#x7801;">&#x5E38;&#x89C1;&#x72B6;&#x6001;&#x7801;</h6>
+<pre><code class="lang-shell">xmlhttp.readyState&#x7684;&#x503C;&#x53CA;&#x89E3;&#x91CA;&#xFF1A;
+
+0&#xFF1A;&#x8BF7;&#x6C42;&#x672A;&#x521D;&#x59CB;&#x5316;&#xFF08;&#x8FD8;&#x6CA1;&#x6709;&#x8C03;&#x7528; open()&#xFF09;&#x3002;
+
+1&#xFF1A;&#x8BF7;&#x6C42;&#x5DF2;&#x7ECF;&#x5EFA;&#x7ACB;&#xFF0C;&#x4F46;&#x662F;&#x8FD8;&#x6CA1;&#x6709;&#x53D1;&#x9001;&#xFF08;&#x8FD8;&#x6CA1;&#x6709;&#x8C03;&#x7528; send()&#xFF09;&#x3002;
+
+2&#xFF1A;&#x8BF7;&#x6C42;&#x5DF2;&#x53D1;&#x9001;&#xFF0C;&#x6B63;&#x5728;&#x5904;&#x7406;&#x4E2D;&#xFF08;&#x901A;&#x5E38;&#x73B0;&#x5728;&#x53EF;&#x4EE5;&#x4ECE;&#x54CD;&#x5E94;&#x4E2D;&#x83B7;&#x53D6;&#x5185;&#x5BB9;&#x5934;&#xFF09;&#x3002;
+
+3&#xFF1A;&#x8BF7;&#x6C42;&#x5728;&#x5904;&#x7406;&#x4E2D;&#xFF1B;&#x901A;&#x5E38;&#x54CD;&#x5E94;&#x4E2D;&#x5DF2;&#x6709;&#x90E8;&#x5206;&#x6570;&#x636E;&#x53EF;&#x7528;&#x4E86;&#xFF0C;&#x4F46;&#x662F;&#x670D;&#x52A1;&#x5668;&#x8FD8;&#x6CA1;&#x6709;&#x5B8C;&#x6210;&#x54CD;&#x5E94;&#x7684;&#x751F;&#x6210;&#x3002;
+
+4&#xFF1A;&#x54CD;&#x5E94;&#x5DF2;&#x5B8C;&#x6210;&#xFF1B;&#x60A8;&#x53EF;&#x4EE5;&#x83B7;&#x53D6;&#x5E76;&#x4F7F;&#x7528;&#x670D;&#x52A1;&#x5668;&#x7684;&#x54CD;&#x5E94;&#x4E86;&#x3002;
+
+xmlhttp.status&#x7684;&#x503C;&#x53CA;&#x89E3;&#x91CA;&#xFF1A;
+
+100&#x2014;&#x2014;&#x5BA2;&#x6237;&#x5FC5;&#x987B;&#x7EE7;&#x7EED;&#x53D1;&#x51FA;&#x8BF7;&#x6C42;
+
+101&#x2014;&#x2014;&#x5BA2;&#x6237;&#x8981;&#x6C42;&#x670D;&#x52A1;&#x5668;&#x6839;&#x636E;&#x8BF7;&#x6C42;&#x8F6C;&#x6362;HTTP&#x534F;&#x8BAE;&#x7248;&#x672C;
+
+200&#x2014;&#x2014;&#x4EA4;&#x6613;&#x6210;&#x529F;
+
+201&#x2014;&#x2014;&#x63D0;&#x793A;&#x77E5;&#x9053;&#x65B0;&#x6587;&#x4EF6;&#x7684;URL
+
+202&#x2014;&#x2014;&#x63A5;&#x53D7;&#x548C;&#x5904;&#x7406;&#x3001;&#x4F46;&#x5904;&#x7406;&#x672A;&#x5B8C;&#x6210;
+
+203&#x2014;&#x2014;&#x8FD4;&#x56DE;&#x4FE1;&#x606F;&#x4E0D;&#x786E;&#x5B9A;&#x6216;&#x4E0D;&#x5B8C;&#x6574;
+
+204&#x2014;&#x2014;&#x8BF7;&#x6C42;&#x6536;&#x5230;&#xFF0C;&#x4F46;&#x8FD4;&#x56DE;&#x4FE1;&#x606F;&#x4E3A;&#x7A7A;
+
+205&#x2014;&#x2014;&#x670D;&#x52A1;&#x5668;&#x5B8C;&#x6210;&#x4E86;&#x8BF7;&#x6C42;&#xFF0C;&#x7528;&#x6237;&#x4EE3;&#x7406;&#x5FC5;&#x987B;&#x590D;&#x4F4D;&#x5F53;&#x524D;&#x5DF2;&#x7ECF;&#x6D4F;&#x89C8;&#x8FC7;&#x7684;&#x6587;&#x4EF6;
+
+206&#x2014;&#x2014;&#x670D;&#x52A1;&#x5668;&#x5DF2;&#x7ECF;&#x5B8C;&#x6210;&#x4E86;&#x90E8;&#x5206;&#x7528;&#x6237;&#x7684;GET&#x8BF7;&#x6C42;
+
+300&#x2014;&#x2014;&#x8BF7;&#x6C42;&#x7684;&#x8D44;&#x6E90;&#x53EF;&#x5728;&#x591A;&#x5904;&#x5F97;&#x5230;
+
+301&#x2014;&#x2014;&#x5220;&#x9664;&#x8BF7;&#x6C42;&#x6570;&#x636E;
+
+302&#x2014;&#x2014;&#x5728;&#x5176;&#x4ED6;&#x5730;&#x5740;&#x53D1;&#x73B0;&#x4E86;&#x8BF7;&#x6C42;&#x6570;&#x636E;
+
+303&#x2014;&#x2014;&#x5EFA;&#x8BAE;&#x5BA2;&#x6237;&#x8BBF;&#x95EE;&#x5176;&#x4ED6;URL&#x6216;&#x8BBF;&#x95EE;&#x65B9;&#x5F0F;
+
+304&#x2014;&#x2014;&#x5BA2;&#x6237;&#x7AEF;&#x5DF2;&#x7ECF;&#x6267;&#x884C;&#x4E86;GET&#xFF0C;&#x4F46;&#x6587;&#x4EF6;&#x672A;&#x53D8;&#x5316;
+
+305&#x2014;&#x2014;&#x8BF7;&#x6C42;&#x7684;&#x8D44;&#x6E90;&#x5FC5;&#x987B;&#x4ECE;&#x670D;&#x52A1;&#x5668;&#x6307;&#x5B9A;&#x7684;&#x5730;&#x5740;&#x5F97;&#x5230;
+
+306&#x2014;&#x2014;&#x524D;&#x4E00;&#x7248;&#x672C;HTTP&#x4E2D;&#x4F7F;&#x7528;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x73B0;&#x884C;&#x7248;&#x672C;&#x4E2D;&#x4E0D;&#x518D;&#x4F7F;&#x7528;
+
+307&#x2014;&#x2014;&#x7533;&#x660E;&#x8BF7;&#x6C42;&#x7684;&#x8D44;&#x6E90;&#x4E34;&#x65F6;&#x6027;&#x5220;&#x9664;
+
+400&#x2014;&#x2014;&#x9519;&#x8BEF;&#x8BF7;&#x6C42;&#xFF0C;&#x5982;&#x8BED;&#x6CD5;&#x9519;&#x8BEF;
+
+401&#x2014;&#x2014;&#x8BF7;&#x6C42;&#x6388;&#x6743;&#x5931;&#x8D25;
+
+402&#x2014;&#x2014;&#x4FDD;&#x7559;&#x6709;&#x6548;ChargeTo&#x5934;&#x54CD;&#x5E94;
+
+403&#x2014;&#x2014;&#x8BF7;&#x6C42;&#x4E0D;&#x5141;&#x8BB8;
+
+404&#x2014;&#x2014;&#x6CA1;&#x6709;&#x53D1;&#x73B0;&#x6587;&#x4EF6;&#x3001;&#x67E5;&#x8BE2;&#x6216;URl
+
+405&#x2014;&#x2014;&#x7528;&#x6237;&#x5728;Request-Line&#x5B57;&#x6BB5;&#x5B9A;&#x4E49;&#x7684;&#x65B9;&#x6CD5;&#x4E0D;&#x5141;&#x8BB8;
+
+406&#x2014;&#x2014;&#x6839;&#x636E;&#x7528;&#x6237;&#x53D1;&#x9001;&#x7684;Accept&#x62D6;&#xFF0C;&#x8BF7;&#x6C42;&#x8D44;&#x6E90;&#x4E0D;&#x53EF;&#x8BBF;&#x95EE;
+
+407&#x2014;&#x2014;&#x7C7B;&#x4F3C;401&#xFF0C;&#x7528;&#x6237;&#x5FC5;&#x987B;&#x9996;&#x5148;&#x5728;&#x4EE3;&#x7406;&#x670D;&#x52A1;&#x5668;&#x4E0A;&#x5F97;&#x5230;&#x6388;&#x6743;
+
+408&#x2014;&#x2014;&#x5BA2;&#x6237;&#x7AEF;&#x6CA1;&#x6709;&#x5728;&#x7528;&#x6237;&#x6307;&#x5B9A;&#x7684;&#x997F;&#x65F6;&#x95F4;&#x5185;&#x5B8C;&#x6210;&#x8BF7;&#x6C42;
+
+409&#x2014;&#x2014;&#x5BF9;&#x5F53;&#x524D;&#x8D44;&#x6E90;&#x72B6;&#x6001;&#xFF0C;&#x8BF7;&#x6C42;&#x4E0D;&#x80FD;&#x5B8C;&#x6210;
+
+410&#x2014;&#x2014;&#x670D;&#x52A1;&#x5668;&#x4E0A;&#x4E0D;&#x518D;&#x6709;&#x6B64;&#x8D44;&#x6E90;&#x4E14;&#x65E0;&#x8FDB;&#x4E00;&#x6B65;&#x7684;&#x53C2;&#x8003;&#x5730;&#x5740;
+
+411&#x2014;&#x2014;&#x670D;&#x52A1;&#x5668;&#x62D2;&#x7EDD;&#x7528;&#x6237;&#x5B9A;&#x4E49;&#x7684;Content-Length&#x5C5E;&#x6027;&#x8BF7;&#x6C42;
+
+412&#x2014;&#x2014;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x8BF7;&#x6C42;&#x5934;&#x5B57;&#x6BB5;&#x5728;&#x5F53;&#x524D;&#x8BF7;&#x6C42;&#x4E2D;&#x9519;&#x8BEF;
+
+413&#x2014;&#x2014;&#x8BF7;&#x6C42;&#x7684;&#x8D44;&#x6E90;&#x5927;&#x4E8E;&#x670D;&#x52A1;&#x5668;&#x5141;&#x8BB8;&#x7684;&#x5927;&#x5C0F;
+
+414&#x2014;&#x2014;&#x8BF7;&#x6C42;&#x7684;&#x8D44;&#x6E90;URL&#x957F;&#x4E8E;&#x670D;&#x52A1;&#x5668;&#x5141;&#x8BB8;&#x7684;&#x957F;&#x5EA6;
+
+415&#x2014;&#x2014;&#x8BF7;&#x6C42;&#x8D44;&#x6E90;&#x4E0D;&#x652F;&#x6301;&#x8BF7;&#x6C42;&#x9879;&#x76EE;&#x683C;&#x5F0F;
+
+416&#x2014;&#x2014;&#x8BF7;&#x6C42;&#x4E2D;&#x5305;&#x542B;Range&#x8BF7;&#x6C42;&#x5934;&#x5B57;&#x6BB5;&#xFF0C;&#x5728;&#x5F53;&#x524D;&#x8BF7;&#x6C42;&#x8D44;&#x6E90;&#x8303;&#x56F4;&#x5185;&#x6CA1;&#x6709;range&#x6307;&#x793A;&#x503C;&#xFF0C;&#x8BF7;&#x6C42;&#x4E5F;&#x4E0D;&#x5305;&#x542B;If-Range&#x8BF7;&#x6C42;&#x5934;&#x5B57;&#x6BB5;
+
+417&#x2014;&#x2014;&#x670D;&#x52A1;&#x5668;&#x4E0D;&#x6EE1;&#x8DB3;&#x8BF7;&#x6C42;Expect&#x5934;&#x5B57;&#x6BB5;&#x6307;&#x5B9A;&#x7684;&#x671F;&#x671B;&#x503C;&#xFF0C;&#x5982;&#x679C;&#x662F;&#x4EE3;&#x7406;&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x53EF;&#x80FD;&#x662F;&#x4E0B;&#x4E00;&#x7EA7;&#x670D;&#x52A1;&#x5668;&#x4E0D;&#x80FD;&#x6EE1;&#x8DB3;&#x8BF7;&#x6C42;
+
+&#x5408;&#x8D77;&#x6765;
+
+500&#x2014;&#x2014;&#x670D;&#x52A1;&#x5668;&#x4EA7;&#x751F;&#x5185;&#x90E8;&#x9519;&#x8BEF;
+
+501&#x2014;&#x2014;&#x670D;&#x52A1;&#x5668;&#x4E0D;&#x652F;&#x6301;&#x8BF7;&#x6C42;&#x7684;&#x51FD;&#x6570;
+
+502&#x2014;&#x2014;&#x670D;&#x52A1;&#x5668;&#x6682;&#x65F6;&#x4E0D;&#x53EF;&#x7528;&#xFF0C;&#x6709;&#x65F6;&#x662F;&#x4E3A;&#x4E86;&#x9632;&#x6B62;&#x53D1;&#x751F;&#x7CFB;&#x7EDF;&#x8FC7;&#x8F7D;
+
+503&#x2014;&#x2014;&#x670D;&#x52A1;&#x5668;&#x8FC7;&#x8F7D;&#x6216;&#x6682;&#x505C;&#x7EF4;&#x4FEE;
+
+504&#x2014;&#x2014;&#x5173;&#x53E3;&#x8FC7;&#x8F7D;&#xFF0C;&#x670D;&#x52A1;&#x5668;&#x4F7F;&#x7528;&#x53E6;&#x4E00;&#x4E2A;&#x5173;&#x53E3;&#x6216;&#x670D;&#x52A1;&#x6765;&#x54CD;&#x5E94;&#x7528;&#x6237;&#xFF0C;&#x7B49;&#x5F85;&#x65F6;&#x95F4;&#x8BBE;&#x5B9A;&#x503C;&#x8F83;&#x957F;
+
+505&#x2014;&#x2014;&#x670D;&#x52A1;&#x5668;&#x4E0D;&#x652F;&#x6301;&#x6216;&#x62D2;&#x7EDD;&#x652F;&#x8BF7;&#x6C42;&#x5934;&#x4E2D;&#x6307;&#x5B9A;&#x7684;HTTP&#x7248;&#x672C;
+
+1xx:&#x4FE1;&#x606F;&#x54CD;&#x5E94;&#x7C7B;&#xFF0C;&#x8868;&#x793A;&#x63A5;&#x6536;&#x5230;&#x8BF7;&#x6C42;&#x5E76;&#x4E14;&#x7EE7;&#x7EED;&#x5904;&#x7406;
+
+2xx:&#x5904;&#x7406;&#x6210;&#x529F;&#x54CD;&#x5E94;&#x7C7B;&#xFF0C;&#x8868;&#x793A;&#x52A8;&#x4F5C;&#x88AB;&#x6210;&#x529F;&#x63A5;&#x6536;&#x3001;&#x7406;&#x89E3;&#x548C;&#x63A5;&#x53D7;
+
+3xx:&#x91CD;&#x5B9A;&#x5411;&#x54CD;&#x5E94;&#x7C7B;&#xFF0C;&#x4E3A;&#x4E86;&#x5B8C;&#x6210;&#x6307;&#x5B9A;&#x7684;&#x52A8;&#x4F5C;&#xFF0C;&#x5FC5;&#x987B;&#x63A5;&#x53D7;&#x8FDB;&#x4E00;&#x6B65;&#x5904;&#x7406;
+
+4xx:&#x5BA2;&#x6237;&#x7AEF;&#x9519;&#x8BEF;&#xFF0C;&#x5BA2;&#x6237;&#x8BF7;&#x6C42;&#x5305;&#x542B;&#x8BED;&#x6CD5;&#x9519;&#x8BEF;&#x6216;&#x8005;&#x662F;&#x4E0D;&#x80FD;&#x6B63;&#x786E;&#x6267;&#x884C;
+
+5xx:&#x670D;&#x52A1;&#x7AEF;&#x9519;&#x8BEF;&#xFF0C;&#x670D;&#x52A1;&#x5668;&#x4E0D;&#x80FD;&#x6B63;&#x786E;&#x6267;&#x884C;&#x4E00;&#x4E2A;&#x6B63;&#x786E;&#x7684;&#x8BF7;&#x6C42;
+
+xmlhttp.readyState==4 &amp;&amp; xmlhttp.status==200&#x7684;&#x89E3;&#x91CA;&#xFF1A;&#x8BF7;&#x6C42;&#x5B8C;&#x6210;&#x5E76;&#x4E14;&#x6210;&#x529F;&#x8FD4;&#x56DE;
+</code></pre>
 
                                 
                                 </section>
@@ -598,7 +951,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"PHP基础回顾之Ajax（八）","level":"1.1.5.8","depth":3,"previous":{"title":"PHP基础回顾之My_SQL（七）","level":"1.1.5.7","depth":3,"path":"blog/phpfile/PHP基础回顾之My_SQL（七）.md","ref":"blog/phpfile/PHP基础回顾之My_SQL（七）.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"blog/phpfile/PHP基础回顾之Ajax（八）.md","mtime":"2020-03-31T02:38:21.019Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-31T02:39:42.037Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"PHP基础回顾之Ajax（八）","level":"1.1.5.8","depth":3,"previous":{"title":"PHP基础回顾之My_SQL（七）","level":"1.1.5.7","depth":3,"path":"blog/phpfile/PHP基础回顾之My_SQL（七）.md","ref":"blog/phpfile/PHP基础回顾之My_SQL（七）.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"blog/phpfile/PHP基础回顾之Ajax（八）.md","mtime":"2020-03-31T07:39:34.912Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-31T02:39:42.037Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

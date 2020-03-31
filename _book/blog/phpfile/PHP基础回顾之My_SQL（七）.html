@@ -561,6 +561,261 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="php&#x57FA;&#x7840;&#x56DE;&#x987E;&#x4E4B;mysql&#xFF08;&#x4E03;&#xFF09;">PHP&#x57FA;&#x7840;&#x56DE;&#x987E;&#x4E4B;My_SQL&#xFF08;&#x4E03;&#xFF09;</h1>
+<blockquote>
+<p><strong>&#x8FDE;&#x63A5; MySQL</strong></p>
+</blockquote>
+<pre><code>&lt;?php
+$servername = &quot;localhost&quot;;
+$username = &quot;username&quot;;
+$password = &quot;password&quot;;
+
+// &#x521B;&#x5EFA;&#x8FDE;&#x63A5;
+$conn = new mysqli($servername, $username, $password);
+
+// &#x68C0;&#x6D4B;&#x8FDE;&#x63A5;
+if ($conn-&gt;connect_error) {
+    die(&quot;&#x8FDE;&#x63A5;&#x5931;&#x8D25;: &quot; . $conn-&gt;connect_error);
+} 
+echo &quot;&#x8FDE;&#x63A5;&#x6210;&#x529F;&quot;;
+?&gt;
+</code></pre><blockquote>
+<p><strong>&#x5173;&#x95ED;&#x8FDE;&#x63A5;</strong></p>
+</blockquote>
+<pre><code>$conn-&gt;close(); 
+</code></pre><blockquote>
+<p><strong>&#x521B;&#x5EFA; MySQL &#x6570;&#x636E;&#x5E93;</strong>
+CREATE DATABASE &#x8BED;&#x53E5;&#x7528;&#x4E8E;&#x5728; MySQL &#x4E2D;&#x521B;&#x5EFA;&#x6570;&#x636E;&#x5E93;&#x3002;&#x5728;&#x4E0B;&#x9762;&#x7684;&#x5B9E;&#x4F8B;&#x4E2D;&#xFF0C;&#x521B;&#x5EFA;&#x4E86;&#x4E00;&#x4E2A;&#x540D;&#x4E3A; &quot;myDB&quot; &#x7684;&#x6570;&#x636E;&#x5E93;&#xFF1A;</p>
+</blockquote>
+<pre><code>&lt;?php
+$servername = &quot;localhost&quot;;
+$username = &quot;username&quot;;
+$password = &quot;password&quot;; 
+// &#x521B;&#x5EFA;&#x8FDE;&#x63A5;
+$conn = new mysqli($servername, $username, $password);
+// &#x68C0;&#x6D4B;&#x8FDE;&#x63A5;
+if ($conn-&gt;connect_error) {
+    die(&quot;&#x8FDE;&#x63A5;&#x5931;&#x8D25;: &quot; . $conn-&gt;connect_error);
+}  
+// &#x521B;&#x5EFA;&#x6570;&#x636E;&#x5E93;
+$sql = &quot;CREATE DATABASE myDB&quot;;
+if ($conn-&gt;query($sql) === TRUE) {
+    echo &quot;&#x6570;&#x636E;&#x5E93;&#x521B;&#x5EFA;&#x6210;&#x529F;&quot;;
+} else {
+    echo &quot;Error creating database: &quot; . $conn-&gt;error;
+} 
+$conn-&gt;close();
+?&gt;
+</code></pre><blockquote>
+<p><strong>&#x521B;&#x5EFA;&#x6570;&#x636E;&#x8868;</strong></p>
+</blockquote>
+<pre><code>&lt;?php
+$servername = &quot;localhost&quot;;
+$username = &quot;username&quot;;
+$password = &quot;password&quot;;
+$dbname = &quot;myDB&quot;;
+
+// &#x521B;&#x5EFA;&#x8FDE;&#x63A5;
+$conn = new mysqli($servername, $username, $password,   $dbname);
+// &#x68C0;&#x6D4B;&#x8FDE;&#x63A5;
+if ($conn-&gt;connect_error) {
+    die(&quot;&#x8FDE;&#x63A5;&#x5931;&#x8D25;: &quot; . $conn-&gt;connect_error);
+}
+
+// &#x4F7F;&#x7528; sql &#x521B;&#x5EFA;&#x6570;&#x636E;&#x8868;
+$sql = &quot;CREATE TABLE MyGuests (
+id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+firstname VARCHAR(30) NOT NULL,
+lastname VARCHAR(30) NOT NULL,
+email VARCHAR(50),
+reg_date TIMESTAMP
+)&quot;;
+
+if ($conn-&gt;query($sql) === TRUE) {
+    echo &quot;Table MyGuests created successfully&quot;;
+} else {
+    echo &quot;&#x521B;&#x5EFA;&#x6570;&#x636E;&#x8868;&#x9519;&#x8BEF;: &quot; . $conn-&gt;error;
+}
+
+$conn-&gt;close();
+?&gt; 
+</code></pre><blockquote>
+<p><strong>&#x63D2;&#x5165;&#x6570;&#x636E;</strong></p>
+</blockquote>
+<pre><code> &lt;?php
+$servername = &quot;localhost&quot;;
+$username = &quot;username&quot;;
+$password = &quot;password&quot;;
+$dbname = &quot;myDB&quot;;
+
+// &#x521B;&#x5EFA;&#x8FDE;&#x63A5;
+$conn = new mysqli($servername, $username, $password,     $dbname);
+// &#x68C0;&#x6D4B;&#x8FDE;&#x63A5;
+if ($conn-&gt;connect_error) {
+    die(&quot;&#x8FDE;&#x63A5;&#x5931;&#x8D25;: &quot; . $conn-&gt;connect_error);
+}
+
+$sql = &quot;INSERT INTO MyGuests (firstname, lastname, email)
+VALUES (&apos;John&apos;, &apos;Doe&apos;, &apos;john@example.com&apos;)&quot;;
+
+if ($conn-&gt;query($sql) === TRUE) {
+    echo &quot;&#x65B0;&#x8BB0;&#x5F55;&#x63D2;&#x5165;&#x6210;&#x529F;&quot;;
+} else {
+    echo &quot;Error: &quot; . $sql . &quot;&lt;br&gt;&quot; . $conn-&gt;error;
+}
+
+$conn-&gt;close();
+?&gt;
+</code></pre><blockquote>
+<p><strong>&#x63D2;&#x5165;&#x591A;&#x6761;&#x6570;&#x636E;</strong></p>
+</blockquote>
+<pre><code>&lt;?php
+$servername = &quot;localhost&quot;;
+$username = &quot;username&quot;;
+$password = &quot;password&quot;;
+$dbname = &quot;myDB&quot;;
+
+// &#x521B;&#x5EFA;&#x94FE;&#x63A5;
+$conn = new mysqli($servername, $username, $password,     $dbname);
+// &#x68C0;&#x67E5;&#x94FE;&#x63A5;
+if ($conn-&gt;connect_error) {
+    die(&quot;&#x8FDE;&#x63A5;&#x5931;&#x8D25;: &quot; . $conn-&gt;connect_error);
+} 
+
+$sql = &quot;INSERT INTO MyGuests (firstname, lastname, email)
+VALUES (&apos;John&apos;, &apos;Doe&apos;, &apos;john@example.com&apos;);&quot;;
+$sql .= &quot;INSERT INTO MyGuests (firstname, lastname, email)
+VALUES (&apos;Mary&apos;, &apos;Moe&apos;, &apos;mary@example.com&apos;);&quot;;
+$sql .= &quot;INSERT INTO MyGuests (firstname, lastname, email)
+VALUES (&apos;Julie&apos;, &apos;Dooley&apos;, &apos;julie@example.com&apos;)&quot;;
+
+if ($conn-&gt;multi_query($sql) === TRUE) {
+    echo &quot;&#x65B0;&#x8BB0;&#x5F55;&#x63D2;&#x5165;&#x6210;&#x529F;&quot;;
+} else {
+    echo &quot;Error: &quot; . $sql . &quot;&lt;br&gt;&quot; . $conn-&gt;error;
+}
+
+$conn-&gt;close();
+?&gt;
+</code></pre><blockquote>
+<p><strong>MySQLi &#x9884;&#x5904;&#x7406;&#x8BED;&#x53E5;</strong>
+&#x4EE5;&#x4E0B;&#x5B9E;&#x4F8B;&#x5728; MySQLi &#x4E2D;&#x4F7F;&#x7528;&#x4E86;&#x9884;&#x5904;&#x7406;&#x8BED;&#x53E5;&#xFF0C;&#x5E76;&#x7ED1;&#x5B9A;&#x4E86;&#x76F8;&#x5E94;&#x7684;&#x53C2;&#x6570;:
+&#x5B9E;&#x4F8B; (MySQLi &#x4F7F;&#x7528;&#x9884;&#x5904;&#x7406;&#x8BED;&#x53E5;)</p>
+</blockquote>
+<pre><code> &lt;?php
+$servername = &quot;localhost&quot;;
+$username = &quot;username&quot;;
+$password = &quot;password&quot;;
+$dbname = &quot;myDB&quot;;
+
+// &#x521B;&#x5EFA;&#x8FDE;&#x63A5;
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// &#x68C0;&#x6D4B;&#x8FDE;&#x63A5;
+if ($conn-&gt;connect_error) {
+    die(&quot;&#x8FDE;&#x63A5;&#x5931;&#x8D25;: &quot; . $conn-&gt;connect_error);
+}
+
+// &#x9884;&#x5904;&#x7406;&#x53CA;&#x7ED1;&#x5B9A;
+$stmt = $conn-&gt;prepare(&quot;INSERT INTO MyGuests (firstname, lastname, email) VALUES (?, ?, ?)&quot;);
+$stmt-&gt;bind_param(&quot;sss&quot;, $firstname, $lastname, $email);
+
+// &#x8BBE;&#x7F6E;&#x53C2;&#x6570;&#x5E76;&#x6267;&#x884C;
+$firstname = &quot;John&quot;;
+$lastname = &quot;Doe&quot;;
+$email = &quot;john@example.com&quot;;
+$stmt-&gt;execute();
+
+$firstname = &quot;Mary&quot;;
+$lastname = &quot;Moe&quot;;
+$email = &quot;mary@example.com&quot;;
+$stmt-&gt;execute();
+
+$firstname = &quot;Julie&quot;;
+$lastname = &quot;Dooley&quot;;
+$email = &quot;julie@example.com&quot;;
+$stmt-&gt;execute();
+
+    echo &quot;&#x65B0;&#x8BB0;&#x5F55;&#x63D2;&#x5165;&#x6210;&#x529F;&quot;;
+
+    $stmt-&gt;close();
+    $conn-&gt;close();
+    ?&gt;
+</code></pre><blockquote>
+<p><strong>&#x4ECE; MySQL &#x6570;&#x636E;&#x5E93;&#x8BFB;&#x53D6;&#x6570;&#x636E;</strong></p>
+</blockquote>
+<pre><code>&lt;?php
+$servername = &quot;localhost&quot;;
+$username = &quot;username&quot;;
+$password = &quot;password&quot;;
+$dbname = &quot;myDB&quot;;
+
+// &#x521B;&#x5EFA;&#x8FDE;&#x63A5;
+$conn = new mysqli($servername, $username, $password,     $dbname);
+// Check connection
+if ($conn-&gt;connect_error) {
+die(&quot;&#x8FDE;&#x63A5;&#x5931;&#x8D25;: &quot; . $conn-&gt;connect_error);
+} 
+
+$sql = &quot;SELECT id, firstname, lastname FROM MyGuests&quot;;
+$result = $conn-&gt;query($sql);
+
+if ($result-&gt;num_rows &gt; 0) {
+// &#x8F93;&#x51FA;&#x6570;&#x636E;
+    while($row = $result-&gt;fetch_assoc()) {
+          echo &quot;id: &quot; . $row[&quot;id&quot;]. &quot; - Name: &quot; . $row[&quot;firstname&quot;]. &quot; &quot; .       $row[&quot;lastname&quot;]. &quot;&lt;br&gt;&quot;;
+    }
+} else {
+    echo &quot;0 &#x7ED3;&#x679C;&quot;;
+}
+$conn-&gt;close();
+?&gt;
+</code></pre><blockquote>
+<p><strong>where&#x8BED;&#x53E5;</strong></p>
+</blockquote>
+<pre><code>&lt;?php
+$con=mysqli_connect(&quot;localhost&quot;,&quot;username&quot;,&quot;password&quot;,&quot;database&quot;    );
+// &#x68C0;&#x6D4B;&#x8FDE;&#x63A5;
+if (mysqli_connect_errno())
+{
+    echo &quot;&#x8FDE;&#x63A5;&#x5931;&#x8D25;: &quot; . mysqli_connect_error();
+}
+
+$result = mysqli_query($con,&quot;SELECT * FROM Persons
+WHERE FirstName=&apos;Peter&apos;&quot;);
+
+while($row = mysqli_fetch_array($result))
+{
+    echo $row[&apos;FirstName&apos;] . &quot; &quot; . $row[&apos;LastName&apos;];
+    echo &quot;&lt;br&gt;&quot;;
+}
+?&gt;
+</code></pre><blockquote>
+<p><strong>ORDER BY &#x5173;&#x952E;&#x8BCD;</strong></p>
+<ul>
+<li>ORDER BY &#x5173;&#x952E;&#x8BCD;&#x7528;&#x4E8E;&#x5BF9;&#x8BB0;&#x5F55;&#x96C6;&#x4E2D;&#x7684;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x6392;&#x5E8F;&#x3002;</li>
+<li>ORDER BY &#x5173;&#x952E;&#x8BCD;&#x9ED8;&#x8BA4;&#x5BF9;&#x8BB0;&#x5F55;&#x8FDB;&#x884C;&#x5347;&#x5E8F;&#x6392;&#x5E8F;&#x3002;
+-&#x7528; DESC &#x5173;&#x952E;&#x5B57;&#x964D;&#x5E8F;&#x6392;&#x5E8F;
+&#x8BED;&#x6CD5;
+SELECT column_name(s)
+FROM table_name
+ORDER BY column_name(s) ASC|DESC</li>
+</ul>
+<p><strong>&#x66F4;&#x65B0;&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x7684;&#x6570;&#x636E;update</strong></p>
+<ul>
+<li>UPDATE &#x8BED;&#x53E5;&#x7528;&#x4E8E;&#x66F4;&#x65B0;&#x6570;&#x636E;&#x5E93;&#x8868;&#x4E2D;&#x5DF2;&#x5B58;&#x5728;&#x7684;&#x8BB0;&#x5F55;&#x3002;
+&#x8BED;&#x6CD5;
+UPDATE table_name
+SET column1=value, column2=value2,...
+WHERE some_column=some_value</li>
+</ul>
+<p><strong>&#x5220;&#x9664;&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x7684;&#x6570;&#x636E;delete</strong></p>
+<ul>
+<li>DELETE FROM &#x8BED;&#x53E5;&#x7528;&#x4E8E;&#x4ECE;&#x6570;&#x636E;&#x5E93;&#x8868;&#x4E2D;&#x5220;&#x9664;&#x8BB0;&#x5F55;&#x3002;
+&#x8BED;&#x6CD5;
+DELETE FROM table_name
+WHERE some_column = some_value</li>
+</ul>
+</blockquote>
 
                                 
                                 </section>
@@ -604,7 +859,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"PHP基础回顾之My_SQL（七）","level":"1.1.5.7","depth":3,"next":{"title":"PHP基础回顾之Ajax（八）","level":"1.1.5.8","depth":3,"path":"blog/phpfile/PHP基础回顾之Ajax（八）.md","ref":"blog/phpfile/PHP基础回顾之Ajax（八）.md","articles":[]},"previous":{"title":"PHP基础回顾之PHP_JSON（六）","level":"1.1.5.6","depth":3,"path":"blog/phpfile/PHP基础回顾之PHP_JSON（六）.md","ref":"blog/phpfile/PHP基础回顾之PHP_JSON（六）.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"blog/phpfile/PHP基础回顾之My_SQL（七）.md","mtime":"2020-03-31T02:38:21.019Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-31T02:39:42.037Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"PHP基础回顾之My_SQL（七）","level":"1.1.5.7","depth":3,"next":{"title":"PHP基础回顾之Ajax（八）","level":"1.1.5.8","depth":3,"path":"blog/phpfile/PHP基础回顾之Ajax（八）.md","ref":"blog/phpfile/PHP基础回顾之Ajax（八）.md","articles":[]},"previous":{"title":"PHP基础回顾之PHP_JSON（六）","level":"1.1.5.6","depth":3,"path":"blog/phpfile/PHP基础回顾之PHP_JSON（六）.md","ref":"blog/phpfile/PHP基础回顾之PHP_JSON（六）.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"blog/phpfile/PHP基础回顾之My_SQL（七）.md","mtime":"2020-03-31T07:41:53.190Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-31T02:39:42.037Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
