@@ -4,12 +4,6 @@
 
 ## [Smileyqp的个人博客](https://smileyqp.netlify.com/)
 
-![smileyqp](https://github.com/smileyqp/github_pic/blob/master/smileyqp.github.io/1.png)
-![smileyqp](https://github.com/smileyqp/github_pic/blob/master/smileyqp.github.io/2.png)
-![smileyqp](https://github.com/smileyqp/github_pic/blob/master/smileyqp.github.io/3.png)
-![smileyqp](https://github.com/smileyqp/github_pic/blob/master/smileyqp.github.io/4.png)
-![smileyqp](https://github.com/smileyqp/github_pic/blob/master/smileyqp.github.io/5.png)
-![smileyqp](https://github.com/smileyqp/github_pic/blob/master/smileyqp.github.io/6.png)
 
 #### 关于样式c
 
@@ -72,4 +66,11 @@ var _hmt = _hmt || [];
 
     - [x] 压缩图片大小
 
-    
+
+
+![smileyqp](https://github.com/smileyqp/github_pic/blob/master/smileyqp.github.io/1.png)
+![smileyqp](https://github.com/smileyqp/github_pic/blob/master/smileyqp.github.io/2.png)
+![smileyqp](https://github.com/smileyqp/github_pic/blob/master/smileyqp.github.io/3.png)
+![smileyqp](https://github.com/smileyqp/github_pic/blob/master/smileyqp.github.io/4.png)
+![smileyqp](https://github.com/smileyqp/github_pic/blob/master/smileyqp.github.io/5.png)
+![smileyqp](https://github.com/smileyqp/github_pic/blob/master/smileyqp.github.io/6.png)
