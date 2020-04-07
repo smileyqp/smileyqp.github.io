@@ -3,7 +3,10 @@
 html {
     font-size: 14px;
 }
-
+::selection{
+    background-color: #b3d4fc;
+    text-shadow: none;
+}
 body {
     font-family: "Source Sans Pro", sans-serif;
     cursor:url('../img/cursor.ico')

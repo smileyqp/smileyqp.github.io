@@ -4,9 +4,14 @@
 
 ## [Smileyqp的个人博客](https://smileyqp.netlify.com/)
 
-![Screenshot from 2020-04-03 15-06-31](/home/smileyqp/Pictures/Screenshot from 2020-04-03 15-06-31.png)
+![smileyqp](https://github.com/smileyqp/github_pic/blob/master/smileyqp.github.io/1.png)
+![smileyqp](https://github.com/smileyqp/github_pic/blob/master/smileyqp.github.io/2.png)
+![smileyqp](https://github.com/smileyqp/github_pic/blob/master/smileyqp.github.io/3.png)
+![smileyqp](https://github.com/smileyqp/github_pic/blob/master/smileyqp.github.io/4.png)
+![smileyqp](https://github.com/smileyqp/github_pic/blob/master/smileyqp.github.io/5.png)
+![smileyqp](https://github.com/smileyqp/github_pic/blob/master/smileyqp.github.io/6.png)
 
-#### 关于样式
+#### 关于样式c
 
 - [x] 鼠标点击爱心
 - [x] 雪花
