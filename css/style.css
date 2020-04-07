@@ -6,6 +6,7 @@ html {
 
 body {
     font-family: "Source Sans Pro", sans-serif;
+    cursor:url('../img/cursor.ico')
 }
 
 h1,
