@@ -4,6 +4,7 @@
 
 ## [Smileyqp的个人博客](https://smileyqp.netlify.com/)
 
+![smileyqp](https://github.com/smileyqp/github_pic/blob/master/smileyqp.github.io/smileyqp.gif)
 
 #### 关于样式c
 
