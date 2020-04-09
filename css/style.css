@@ -2,6 +2,7 @@
 
 html {
     font-size: 14px;
+    overflow-x: hidden;
 }
 ::selection{
     background-color: #b3d4fc;
@@ -590,4 +591,24 @@ a:focus {
     #testimonials .quote {
         padding: 0 12rem;
     }
+}
+::-webkit-scrollbar
+{
+	width: 2px;
+	height: 16px;
+	backgroud-color: transparent;
+}
+ 
+::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 3px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 3px rgba(0,0,0,.3);
+	background-color: transparent;
 }
