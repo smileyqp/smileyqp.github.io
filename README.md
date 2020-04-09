@@ -6,10 +6,11 @@
 
 ![smileyqp](https://github.com/smileyqp/github_pic/blob/master/smileyqp.github.io/smileyqp.gif)
 
-#### 关于样式c
+#### 关于样式
 
 - [x] 鼠标点击爱心
 - [x] 雪花
+- [x] 添加Live2D看板娘
 - [ ] 添加访问数量
 
 
