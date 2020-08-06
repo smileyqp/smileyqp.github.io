@@ -18,6 +18,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" async defer>
     <link rel="stylesheet" href="./live2d/css/live2d.css" />
     <link rel="stylesheet" href="css/style.css" async defer>
+    <link rel="stylesheet" href="//cdn.bootcss.com/gitalk/1.5.0/gitalk.min.css">
+    <script src="//cdn.bootcss.com/gitalk/1.5.0/gitalk.min.js"></script>
     <!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -427,6 +429,7 @@
             </div>
         </div>
     </section>
+    <div id="gitalk-container"></div>
     <footer id="footer">
         <div class="container">
             <div class="row">
@@ -465,6 +468,18 @@
         <canvas id="live2d" width="280" height="250" class="live2d"></canvas>
         <div class="hide-button">隐藏</div>
     </div>
+    <script>
+        var gitalk = new Gitalk({
+        clientID: '167f6b82895429d63060', // GitHub Application Client ID
+        clientSecret: 'c6f438fb32f175900aff461507b1b6c4672d5fbc', // GitHub Application Client Secret
+        repo: 'smileyqp.github.io',      // 存放评论的仓库
+        owner: 'smileyqp',          // 仓库的创建者，
+        admin: ['smileyqp'],        // 如果仓库有多个人可以操作，那么在这里以数组形式写出
+        id: 'https://smileyqp.github.io/',      // 用于标记评论是哪个页面的，确保唯一，并且长度小于50
+        })
+
+        gitalk.render('gitalk-container');    // 渲染Gitalk评论组件
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
