@@ -12,6 +12,8 @@
 - [x] 雪花
 - [x] 添加Live2D看板娘
 - [ ] 添加访问数量
+- [x] 添加留言功能gittalk(详细方法)[<https://blog.csdn.net/qq_34273059/article/details/108083567>]
+- [x] 添加离开和在这个页面顶部icon样式不一样(详细方法)[<https://blog.csdn.net/qq_34273059/article/details/108083907>]
 
 
 
