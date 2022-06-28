@@ -10,8 +10,8 @@ html {
 }
 body {
     font-family: "Source Sans Pro", sans-serif;
-    # cursor:url('../img/cursor.ico');
-	    cursor: url("https://cdn.jsdelivr.net/gh/moezx/cdn@3.1.9/img/Sakura/cursor/normal.cur"), auto;
+    /* cursor:url('../img/cursor.ico'); */
+    cursor: url("https://cdn.jsdelivr.net/gh/moezx/cdn@3.1.9/img/Sakura/cursor/normal.cur"), auto;
 }
 
 h1,
